@@ -56,9 +56,9 @@ export const AuthContextProvider = (props) => {
     console.log('Logout ping')
     setToken(null)
     setUserId(null)
-    localStorage.remove('token')
-    localStorage.remove('userId')
-    localStorage.remove('exp')
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    localStorage.removeItem('exp')
     if(logoutTimer){
       clearTimeout(logoutTimer)
     }
@@ -71,10 +71,10 @@ export const AuthContextProvider = (props) => {
     setUserId(userId)
     localStorage.setItem('token', token)
     localStorage.setItem('exp', exp)
-    localStorage.setItem('userID', userId)
-    console.log('stuff should be in local storage')
-    // const remainingTime = calculateRemainingTime(exp)
-    // logoutTimer = setTimeout(logout, remainingTime)
+    localStorage.setItem('userId', userId)
+    console.log('Stuff should be in local storage')
+    const remainingTime = calculateRemainingTime(exp)
+    logoutTimer = setTimeout(logout, remainingTime)
   }
 
   const contextValue = {

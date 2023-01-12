@@ -17,9 +17,9 @@ const authCtx = useContext(AuthContext)
       <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/auth' element={!authCtx.token ? <Auth/> : <Navigate to='.'/>}/>
-        <Route path='/form' element={authCtx.token ? <Form/> : <Navigate to='/auth'/>}/>
-        <Route path='/profile' element={authCtx.token ?  <Profile/> : <Navigate to='/auth'/>}/>
+        <Route path='/auth' element={!authCtx.token ? <Auth /> : <Navigate to='/'/>}/>
+        <Route path='/form' element={authCtx.token ? <Form /> : <Navigate to='/auth'/>}/>
+        <Route path='/profile' element={authCtx.token ?  <Profile /> : <Navigate to='/auth'/>}/>
         <Route path='*' element={<Navigate to='/'/>}/>
       </Routes>
     </div>

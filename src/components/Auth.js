@@ -16,29 +16,30 @@ const Auth = () => {
             password
         }
 
-        const baseUrl = 'https://socialmtn.devmountain.com'
+        // const baseUrl = 'https://socialmtn.devmountain.com'
 
-        axios.post(register ? `${baseUrl}/register` : `${baseUrl}/login`, body)
+        axios.post(register ? `/register` : `/login`, body)
             .then(({data}) => {
                 console.log('AFTER AUTH', data)
                 console.log(authCtx)
-                authCtx.login(res.data.token, res.data.exp, res.data.userId)
+                authCtx.login(data.token, data.exp, data.userId)
 
                 
             })
             .catch(err => {
                 setPassword('')
                 setUsername('')
+                alert('Something has gone HORRIBLY Wrong!', err)
             })
 
        console.log('submitHandler called', username, password)
-    //    setRegister(!register)
+       setRegister(!register)
    }
  
    return (
        <main>
            <h1>Welcome!</h1>
-           <form className='form auth-form' onSubmit={submitHandler}>
+           <form className='form auth-form' onSubmit={(e) => submitHandler(e)}>
                <input
                    className='form-input'
                    type='text' 

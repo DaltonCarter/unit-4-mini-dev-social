@@ -86,7 +86,7 @@ export const AuthContextProvider = (props) => {
     if(localData){
       logoutTimer = setTimeout(logout, localData.duration)
     }
-  }, [])
+  }, [localData, logout])
 
   const contextValue = {
     token,
